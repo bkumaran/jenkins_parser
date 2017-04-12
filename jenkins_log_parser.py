@@ -41,7 +41,8 @@ for line in final_array:
             dict[m.group(0)] += 1
 
 total = 0
-del dict["TypeError: kill_memcached() takes exactly 2 arguments (1 given)"]
+if "TypeError: kill_memcached() takes exactly 2 arguments (1 given)" in dict:
+    del dict["TypeError: kill_memcached() takes exactly 2 arguments (1 given)"]
 print '-' * 158
 print "{:<150} {:<8}".format('Error','Count')
 print '-' * 158
