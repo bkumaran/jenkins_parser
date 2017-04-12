@@ -17,6 +17,6 @@ python jenkins_log_parser.py http://qa.sc.couchbase.com/job/test_suite_executor/
 
 ## Notes
 * Works only when the log is in  pass 0 , fail 0 format.
-* Not Really useful when the number of tests run/failed is less.
+* Not useful when the number of tests run/failed is less.
 
 
