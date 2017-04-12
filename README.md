@@ -5,6 +5,9 @@ Parase the Jenkins Log and print the errors with count
 ## Getting Started
 
 git clone https://github.com/bkumaran/jenkins_parser.git
+Cloning into 'jenkins_parser'...
+warning: You appear to have cloned an empty repository.
+Checking connectivity... done.
 
 ### Prerequisites
 
