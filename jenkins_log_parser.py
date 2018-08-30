@@ -17,38 +17,26 @@ dict = {}
 array =[]
 final_array = []
 lines = urllib.urlopen(link).readlines()
+tc_count = 0
 for line in lines:
     line = line.strip('\n')
     if "ERROR: " in line or "FAIL: " in line:
-        array.append(line)
+	tc_count += 1
+        #array.append(str(tc_count)+"\t"+ line)
 	found = 1
     elif "Ran 1 test in" in line and found == 1 :
-	array.append(line+"\n")
+	#array.append(line+"\n")
 	final_array.extend(array)
-	array =[]
+	array =[]	
 	found = 0
-    elif found:
-	array.append(line)
-    else:
-	pass
+    elif "Ran 1 test in" in line and found == 0 :
+	tc_count += 1
+        string = str(tc_count)+"\t"+ "PASS"
+        final_array.append(string)
+    elif found == 1:
+	m = re.match(r"^(.*)(Exception|Error):\s+(.*)", line)
+	if m:
+            array.append(str(tc_count)+"\t"+ m.group(0))
 
 for line in final_array:
-    m = re.match(r"^(.*)(Exception|Error):\s+(.*)", line)
-    if m :
-        if not m.group(0) in dict:
-            dict[m.group(0)] = 1
-        else:
-            dict[m.group(0)] += 1
-
-total = 0
-if "TypeError: kill_memcached() takes exactly 2 arguments (1 given)" in dict:
-    del dict["TypeError: kill_memcached() takes exactly 2 arguments (1 given)"]
-print '-' * 158
-print "{:<150} {:<8}".format('Error','Count')
-print '-' * 158
-for k, v in dict.items():
-    print "{:<150} {:<8}".format(k[:150],v)
-    total = total + v
-print '-' * 158
-print "{:<150} {:<8}".format('Total Errors', total)
-print '-' * 158
+    print line
