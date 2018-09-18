@@ -9,8 +9,7 @@ elif "console" in link:
     link += "Text"
 elif "consoleText" not in link:
     link += "/consoleText"
-else:
-    pass
+
 found=0
 dict = {}
 
