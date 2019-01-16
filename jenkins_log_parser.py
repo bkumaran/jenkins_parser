@@ -12,13 +12,17 @@ elif "consoleText" not in link:
 
 found=0
 dict = {}
-
+tc_pattern = re.compile('Starting Test:\s+(.*)')
 array =[]
 final_array = []
+
 lines = urllib.urlopen(link).readlines()
 tc_count = 0
 for line in lines:
     line = line.strip('\n')
+    tc_group = tc_pattern.search(line)
+    if tc_group:
+	tc_name = tc_group.group(1) 
     if "ERROR: The system was unable to find the specified registry key or value." in line:
 	    pass
     elif 'ERROR: The process "epmd.exe*" not found.' in line:
@@ -36,12 +40,12 @@ for line in lines:
     	found = 0
     elif "Ran 1 test in" in line and found == 0 :
     	tc_count += 1
-        string = str(tc_count)+"\t"+ "PASS"
+        string = str(tc_count)+ "\t" + tc_name + "\t" + "PASS"
         final_array.append(string)
     elif found == 1:
     	m = re.match(r"^(.*)(Exception|Error):\s+(.*)", line)
     	if m:
-                array.append(str(tc_count)+"\t"+ m.group(0))
+                array.append(str(tc_count)+ "\t" + tc_name + "\t" + m.group(0))
 
 for line in final_array:
     print line
