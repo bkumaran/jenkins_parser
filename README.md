@@ -11,12 +11,12 @@ git clone https://github.com/bkumaran/jenkins_parser.git
 Python 2.7.10
 
 ## Running the script
-if you want to print only the failed tests
+if you want to print only the failed tests, by default it will print only the failed tests.
 ```
 python jenkins_log_parser.py http://qa.sc.couchbase.com/job/test_suite_executor/13090/consoleText
 ```
 
-if you want to print all the tests
+if you want to print all the tests.
 ```
 python jenkins_log_parser.py http://qa.sc.couchbase.com/job/test_suite_executor/13090/consoleText all
 ```
