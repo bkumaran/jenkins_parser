@@ -40,12 +40,12 @@ for line in lines:
     	found = 0
     elif "Ran 1 test in" in line and found == 0 :
     	tc_count += 1
-        string = str(tc_count)+ "\t" + tc_name + "\n\t" + "PASS"
+        string = str(tc_count)+ "\t" + tc_name + "\n\t" + "PASS" + "\n"
         final_array.append(string)
     elif found == 1:
     	m = re.match(r"^(.*)(Exception|Error):\s+(.*)", line)
     	if m:
-                array.append(str(tc_count)+ "\t" + tc_name + "\n\t" + m.group(0))
+                array.append(str(tc_count)+ "\t" + tc_name + "\n\t" + m.group(0) + "\n")
 
 for line in final_array:
     print line
