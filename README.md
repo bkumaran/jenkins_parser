@@ -1,6 +1,6 @@
 # Jenkins Log Parser
 
-Parase the Jenkins Log and print the errors with count
+Parse the Jenkins Log and print the errors with count
 
 ## Getting Started
 ```
