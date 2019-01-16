@@ -40,8 +40,9 @@ for line in lines:
     	found = 0
     elif "Ran 1 test in" in line and found == 0 :
     	tc_count += 1
-        string = str(tc_count)+ "\t" + tc_name + "\n\t" + "PASS" + "\n"
-        final_array.append(string)
+	if len(sys.argv) > 2 and sys.argv[2] == "all":
+            string = str(tc_count)+ "\t" + tc_name + "\n\t" + "PASS" + "\n"
+            final_array.append(string)
     elif found == 1:
     	m = re.match(r"^(.*)(Exception|Error):\s+(.*)", line)
     	if m:
