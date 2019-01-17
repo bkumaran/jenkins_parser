@@ -15,6 +15,7 @@ dict = {}
 tc_pattern = re.compile('Starting Test:\s+(.*)')
 array =[]
 final_array = []
+tc_name= ""
 
 lines = urllib.urlopen(link).readlines()
 tc_count = 0
